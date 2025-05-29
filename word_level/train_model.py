@@ -76,8 +76,8 @@ def eval_epoch(model, dataloader, criterion, device):
 def main():
     sequences_path = "./v1/processed_data/sequences.npy"
     labels_path = "./v1/processed_data/labels.npy"
-    batch_size = 8
-    epochs = 10
+    batch_size = 12
+    epochs = 50
     lr = 1e-3
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -107,7 +107,7 @@ def main():
         # Save best model
         if val_acc > best_val_acc:
             best_val_acc = val_acc
-            torch.save(model.state_dict(), "model.pth")
+            torch.save(model, "./v2/model_v2.pth")
 
     print(f"Training complete. Best validation accuracy: {best_val_acc:.4f}")
 

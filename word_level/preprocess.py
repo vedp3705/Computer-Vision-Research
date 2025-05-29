@@ -7,11 +7,11 @@ from tqdm import tqdm
 import json
 from collections import defaultdict
 
-TARGET_GLOSSES = {"computer", "drink"}
+TARGET_GLOSSES = {'drink', 'computer', 'before', 'go', 'who', 'candy', 'cousin'}
 
 
-DATA_PATH = "./v1/raw_videos" # Replace with your actual data path
-OUTPUT_PATH = "./v1/processed_data" # Folder to save processed data
+DATA_PATH = "./v2/raw_videos" # Replace with your actual data path
+OUTPUT_PATH = "./v2/processed_data" # Folder to save processed data
 SEQUENCE_LENGTH = 60  # Number of frames per sequence (video clip)
 NUM_LANDMARKS_POSE = 33 # MediaPipe Pose uses 33 landmarks
 
@@ -140,6 +140,7 @@ def main_preprocess():
     gloss_to_idx = {}
     current_label = 0
     gloss_to_files = defaultdict(list)
+    gloss_success_count = defaultdict(int)
 
     # Initialize MediaPipe Pose
     with mp_pose.Pose(
@@ -182,6 +183,7 @@ def main_preprocess():
                     all_sequences.append(sequence_features)
                     all_labels.append(label_idx)
                     gloss_to_files[gloss].append(video_file)
+                    gloss_success_count[gloss] += 1
                 else:
                     print(f"Warning: Could not process video {video_path}")
 
@@ -208,6 +210,10 @@ def main_preprocess():
 
     with open(os.path.join(OUTPUT_PATH, "processed_files.json"), "w") as f:
         json.dump(gloss_to_files, f, indent=2)
+    
+    print(f"\nGloss-wise successful video counts:")
+    for gloss, count in sorted(gloss_success_count.items(), key=lambda x: -x[1]):
+        print(f"{gloss:20s} -> {count:3d} videos processed")
 
     print(f"Processed data saved to: {OUTPUT_PATH}")
     print("Files: sequences.npy, labels.npy, words_list.txt")
