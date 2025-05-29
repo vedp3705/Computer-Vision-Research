@@ -1,0 +1,11 @@
+Epoch 1/10: Train Loss: 0.6953, Train Acc: 0.4211 | Val Loss: 0.6969, Val Acc: 0.6000
+Epoch 2/10: Train Loss: 0.6660, Train Acc: 0.7368 | Val Loss: 0.6717, Val Acc: 0.8000
+Epoch 3/10: Train Loss: 0.6359, Train Acc: 0.7368 | Val Loss: 0.6509, Val Acc: 0.8000
+Epoch 4/10: Train Loss: 0.5817, Train Acc: 0.7895 | Val Loss: 0.6386, Val Acc: 0.8000
+Epoch 5/10: Train Loss: 0.4538, Train Acc: 0.7895 | Val Loss: 0.5673, Val Acc: 0.6000
+Epoch 6/10: Train Loss: 0.3214, Train Acc: 0.8947 | Val Loss: 0.4837, Val Acc: 0.8000
+Epoch 7/10: Train Loss: 0.2829, Train Acc: 0.8947 | Val Loss: 0.4605, Val Acc: 0.6000
+Epoch 8/10: Train Loss: 0.2754, Train Acc: 0.8947 | Val Loss: 0.4701, Val Acc: 0.6000
+Epoch 9/10: Train Loss: 0.2695, Train Acc: 0.8947 | Val Loss: 0.3005, Val Acc: 0.8000
+Epoch 10/10: Train Loss: 0.3911, Train Acc: 0.8421 | Val Loss: 0.4962, Val Acc: 0.6000
+Training complete. Best validation accuracy: 0.8000
